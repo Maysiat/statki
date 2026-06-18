@@ -3,8 +3,9 @@
 #include <cstdlib>
 using namespace std;
 int main() {
-string a, odpowiedz;
-int b;
+int l=0, b;
+string a;
+srand(time(NULL));
 string table[10][10]=
 {
 {" ","A","B","C","D","E","F","G","H","I",},
@@ -62,19 +63,28 @@ for(int k=0; k<20; k++)
 cout<<endl;
  }
  int t[10]={4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
- for(int k=1; k<10; k++)
+ for(int k=0; k<10; k++)
  {
-     for(int i=0; i<t[k]; i++)
+     l=0;
+     while(l<t[k])
      {
-        srand(time(NULL));
-         int x=rand()%9+1;
-         int y=rand()%9+1;
+         int x=rand()%8+1;
+         int y=rand()%8+1;
         if(table_2[x][y]==" " && table_2[x+1][y+1]==" " && table_2[x-1][y-1]==" ")
         {
             table_2[x][y]="X";
+            l++;
         }
+     }
  }
- }
+      for(int i = 0; i < 10; i++) {
+       for(int j = 0; j < 10; j++){
+           cout<< table_2[i][j]<<" ";
+    }
+    cout<<endl;
+}
+cout<<endl;
+
 }
 
 
