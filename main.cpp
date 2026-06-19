@@ -64,19 +64,44 @@ cout<<endl;
  }
  int t[10]={4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
  for(int k=0; k<10; k++)
- {
-     l=0;
-     while(l<t[k])
-     {
-         int x=rand()%8+1;
-         int y=rand()%8+1;
-        if(table_2[x][y]==" " && table_2[x+1][y+1]==" " && table_2[x-1][y-1]==" ")
-        {
-            table_2[x][y]="X";
-            l++;
+  {
+    bool ustawiono=false;
+
+  while (!ustawiono) {
+    int x = rand() % 9+1;
+    int y = rand() % 9+1;
+    bool z = rand() % 2 == 0;
+
+  bool stawianie=true;
+
+  for (int r = x - 1; r <= (z ? x + 1 : x + t[k]); ++r) {
+        for (int c = y - 1; c <= (z ? y + t[k] : y + 1); ++c) {
+
+            if (r >= x && r < (z ? x + 1 : x + t[k]) &&
+                c >= y && c < (z ? y + t[k] : y + 1)) {
+            if (r < 1 || r >=10 || c < 1 || c >= 10) {
+            stawianie = false;
+                        }
+            }
+    if (r >= 1 && r < 10 && c >= 1 && c < 10) {
+    if (table_2[r][c] == "X") {
+        stawianie = false;
         }
-     }
+    }
+   }
  }
+ if (stawianie) {
+                for (int j = 0; j < t[k]; ++j) {
+                    if (z) {
+                        table_2[x][y + j] = "X";
+                    } else {
+                        table_2[x + j][y] = "X";
+                    }
+                }
+                ustawiono = true;
+            }
+        }
+    }
       for(int i = 0; i < 10; i++) {
        for(int j = 0; j < 10; j++){
            cout<< table_2[i][j]<<" ";
