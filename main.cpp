@@ -109,7 +109,26 @@ cout<<endl;
     cout<<endl;
 }
 cout<<endl;
-
+int k =rand()%2;
+if(k==0)
+{
+    cout<< "Podaj gdzie chcesz strzelic:";
+    cin>> a >> b;
+     for(int i=0; i<10; i++)
+ {
+     if(table_2[0][i]==a)
+     {
+         if(table_2[b][i]=="X";)
+         {
+             cout<<"Trafiony"<<endl;
+             table_2[b][i]="O";
+         }
+         else
+         {
+             cout<<"Pudlo"<<endl;
+         }
+     }
 }
-
+}
+}
 
