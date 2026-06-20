@@ -110,25 +110,52 @@ cout<<endl;
 }
 cout<<endl;
 int k =rand()%2;
+string a;
+int b;
 if(k==0)
 {
+    bool gracz=true;
+    while(gracz)
+    {
     cout<< "Podaj gdzie chcesz strzelic:";
     cin>> a >> b;
      for(int i=0; i<10; i++)
- {
+   {
      if(table_2[0][i]==a)
      {
-         if(table_2[b][i]=="X";)
+         if(table_2[b][i]=="X")
          {
-             cout<<"Trafiony"<<endl;
+             cout<<"Trafiony\n";
              table_2[b][i]="O";
          }
-         else
-         {
-             cout<<"Pudlo"<<endl;
-         }
-     }
+        else
+        {
+            cout<<"Pudlo\n";
+            gracz=false;
+        }
+    }
+  }
+    }
 }
+if(k==1)
+{
+   bool komputer=true;
+    cout<< "Kolejka komputera\n";
+    while(komputer)
+    {
+    int x = rand() % 9+1;
+    int y = rand() % 9+1;
+    if(table[x][y]=="X")
+    {
+        cout<< "Trafiony\n";
+        table[x][y]="O";
+    }
+            else
+    {
+        cout<<"Pudlo\n";
+         komputer=false;
+    }
+    }
 }
 }
 
