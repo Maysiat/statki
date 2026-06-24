@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 int main() {
-int l=0, b;
+int l=0, b, d, u;
 string a;
 srand(time(NULL));
 string table[10][10]=
@@ -56,10 +56,15 @@ cout<<"1-czteromasztowiec"<<endl;
 cout<<"2-trzymasztowce"<<endl;
 cout<<"3-dwomasztowce"<<endl;
 cout<<"4-jednomasztowce"<<endl;
-for(int k=0; k<20; k++)
+for(int k=0; k<10; k++)
 {
-    cin>> a >> b;
- for(int i=0; i<10; i++)
+    cout<< "Podaj dlugosc statku\n";
+    cin>> d;
+    if(d==1)
+    {
+        cout<< "Podaj wspolrzedne:\n";
+        cin>> a >> b;
+         for(int i=0; i<10; i++)
  {
      if(table[0][i]==a)
      {
@@ -73,7 +78,32 @@ for(int k=0; k<20; k++)
     cout<<endl;
 }
 cout<<endl;
+    }
+else{
+    cout<< "Podaj czy chcesz umiescic statek pionowo czy poziomo. Pionowo-wpisz 1, poziomo wpisz 0.\n";
+    cin>> u;
+    cout<< "Podaj pierwsze pole statku.\n";
+    cin>> a >> b;
+ for(int i=0; i<10; i++)
+ {
+     if(table[0][i]==a)
+     {
+         for(int z=0; z<d; z++)
+         {
+             if(u==1) table[b+z][i]="X";
+             else if(u==0) table[b][i+z]="X";
+         }
+     }
+}
+  for(int i = 0; i < 10; i++) {
+       for(int j = 0; j < 10; j++){
+           cout<< table[i][j]<<" ";
+    }
+    cout<<endl;
+}
+cout<<endl;
  }
+}
  int t[10]={4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
  for(int k=0; k<10; k++)
   {
@@ -196,6 +226,16 @@ while(s_2<20 && s_1<20)
         cout<< "Trafiony\n";
         table[x][y]="O";
         s_1++;
+                for(int i = 0; i < 10; i++) {
+       for(int j = 0; j < 10; j++) {
+           cout<< table[i][j]<<" ";
+       }
+       for(int j = 0; j < 10; j++) {
+           cout<< table_3[i][j]<<" ";
+       }
+       cout<<endl;
+    }cout<<endl;
+    cout<<endl;
     }
     else if(table[x][y]=="O")
     {
@@ -207,6 +247,17 @@ while(s_2<20 && s_1<20)
         cout<<"Pudlo\n";
          komputer=false;
          gracz=true;
+         table[x][y]="~";
+               for(int i = 0; i < 10; i++) {
+       for(int j = 0; j < 10; j++) {
+           cout<< table[i][j]<<" ";
+       }
+       for(int j = 0; j < 10; j++) {
+           cout<< table_3[i][j]<<" ";
+       }
+       cout<<endl;
+    }cout<<endl;
+    cout<<endl;
     }
     }
 }
