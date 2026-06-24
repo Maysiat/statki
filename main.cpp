@@ -29,6 +29,18 @@ string table[10][10]=
  {"7"," "," "," "," "," "," "," "," "," ",},
  {"8"," "," "," "," "," "," "," "," "," ",},
  {"9"," "," "," "," "," "," "," "," "," ",}};
+  string table_3[10][10]=
+{{" ","A","B","C","D","E","F","G","H","I",},
+ {"1"," "," "," "," "," "," "," "," "," ",},
+ {"2"," "," "," "," "," "," "," "," "," ",},
+ {"3"," "," "," "," "," "," "," "," "," ",},
+ {"4"," "," "," "," "," "," "," "," "," ",},
+ {"5"," "," "," "," "," "," "," "," "," ",},
+ {"6"," "," "," "," "," "," "," "," "," ",},
+ {"7"," "," "," "," "," "," "," "," "," ",},
+ {"8"," "," "," "," "," "," "," "," "," ",},
+ {"9"," "," "," "," "," "," "," "," "," ",}};
+ cout<< "Autor:Maria Tomczyk\nPamietaj aby umieszczajac statki na planszy podac duza litere, a nasteopnie cyfre np. A 5\n";
    for(int i = 0; i < 10; i++) {
        for(int j = 0; j < 10; j++) {
            cout<< table[i][j]<<" ";
@@ -102,60 +114,109 @@ cout<<endl;
             }
         }
     }
-      for(int i = 0; i < 10; i++) {
-       for(int j = 0; j < 10; j++){
-           cout<< table_2[i][j]<<" ";
-    }
-    cout<<endl;
-}
-cout<<endl;
+system("CLS");
+cout<<"Umiesciles wszystkie statki. Oto twoja plansza\n";
+    for(int i = 0; i < 10; i++) {
+       for(int j = 0; j < 10; j++) {
+           cout<< table[i][j]<<" ";
+       }cout<<endl;
+}cout<<endl;
+int s_1=0, s_2=0;
 int k =rand()%2;
-string a;
-int b;
-if(k==0)
-{
-    bool gracz=true;
-    while(gracz)
+bool komputer=(k==1);
+bool gracz=(k==0);
+
+while(s_2<20 && s_1<20)
     {
-    cout<< "Podaj gdzie chcesz strzelic:";
+    while(gracz && s_2<20)
+    {
+    cout<< "Twoja kolej.Podaj gdzie chcesz strzelic:";
     cin>> a >> b;
+    int ind=-1;
      for(int i=0; i<10; i++)
    {
      if(table_2[0][i]==a)
      {
-         if(table_2[b][i]=="X")
+         ind=i;
+         break;
+     }
+   }
+   if(ind==-1)
+   {
+     cout<< "Strzelales juz w to miejsce.Podaj inne pole\n";
+     continue;
+   }
+         if(table_2[b][ind]=="X")
          {
              cout<<"Trafiony\n";
-             table_2[b][i]="O";
+             table_2[b][ind]="O";
+             table_3[b][ind]="O";
+                for(int i = 0; i < 10; i++) {
+       for(int j = 0; j < 10; j++) {
+           cout<< table[i][j]<<" ";
+       }
+       for(int j = 0; j < 10; j++) {
+           cout<< table_3[i][j]<<" ";
+       }
+       cout<<endl;
+    }cout<<endl;
+    cout<<endl;
+             s_2++;
+         }
+         else if(table_2[b][ind]=="O")
+         {
+          cout<< "Strzelales juz w to miejsce.Podaj inne pole.\n";
          }
         else
         {
             cout<<"Pudlo\n";
+            table_3[b][ind]="~";
             gracz=false;
+            komputer=true;
+             for(int i = 0; i < 10; i++) {
+       for(int j = 0; j < 10; j++) {
+           cout<< table[i][j]<<" ";
+       }
+       for(int j = 0; j < 10; j++) {
+           cout<< table_3[i][j]<<" ";
+       }
+       cout<<endl;
+    }cout<<endl;
+    cout<<endl;
         }
     }
-  }
-    }
-}
-if(k==1)
-{
-   bool komputer=true;
-    cout<< "Kolejka komputera\n";
-    while(komputer)
+     while(komputer && s_1<20)
     {
+    cout<< "Kolejka komputera\n";
     int x = rand() % 9+1;
     int y = rand() % 9+1;
+    cout<< table[0][y] << " " << x <<"\n";
     if(table[x][y]=="X")
     {
         cout<< "Trafiony\n";
         table[x][y]="O";
+        s_1++;
+    }
+    else if(table[x][y]=="O")
+    {
+         cout<< "Komputer podaje inne pole\n";
+         continue;
     }
             else
     {
         cout<<"Pudlo\n";
          komputer=false;
+         gracz=true;
     }
     }
+}
+if(s_1==20)
+{
+    cout<< "Komputer wygral."<<endl;
+}
+else if(s_2==20)
+{
+    cout<< "Brawo wygrales!"<<endl;
 }
 }
 
